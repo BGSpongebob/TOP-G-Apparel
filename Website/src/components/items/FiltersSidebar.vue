@@ -1,0 +1,127 @@
+<template>
+    <div class="filters__sidebar">
+        <div class="filters__box">
+            <p>Категории</p>
+            <div 
+                class="filters__options-list" 
+                v-for="(category, key) in store.categories"
+            >
+                <a :href="'/items/' + key">
+                    {{ category }}
+                </a>
+            </div>
+        </div>
+        <div class="filters__box">
+            <p>Размер</p>
+            <div class="filters__options-list">
+                <label 
+                    class="custom-checkbox__container" 
+                    v-for="size in store.clothes_sizes"
+                >
+                    {{ size }}
+                    <input type="checkbox" :value="size">
+                    <span class="custom-checkbox__checkmark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="filters__box">
+            <p>Пол</p>
+            <div class="filters__options-list">
+                <label 
+                    class="custom-checkbox__container" 
+                    v-for="gender in store.genders"
+                >
+                    {{ gender }}
+                    <input type="checkbox" :value="gender">
+                    <span class="custom-checkbox__checkmark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="filters__box">
+            <p>Възраст</p>
+            <div class="filters__options-list">
+                <label 
+                    class="custom-checkbox__container" 
+                    v-for="age in store.ages"
+                >
+                    {{ age }}
+                    <input type="checkbox" :value="age">
+                    <span class="custom-checkbox__checkmark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="filters__box">
+            <p>Марки</p>
+            <div class="filters__options-list">
+                <label 
+                    class="custom-checkbox__container" 
+                    v-for="brand in store.brands"
+                >
+                    {{ brand }}
+                    <input type="checkbox" :value="brand">
+                    <span class="custom-checkbox__checkmark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="filters__box">
+            <p>Цена</p>
+            <label class="custom-checkbox__container">
+                до 50 лв.
+                <input type="checkbox" value="50">
+                <span class="custom-checkbox__checkmark"></span>
+            </label>
+            <label class="custom-checkbox__container">
+                до 100 лв.
+                <input type="checkbox" value="100">
+                <span class="custom-checkbox__checkmark"></span>
+            </label>
+            <label class="custom-checkbox__container">
+                до 200 лв.
+                <input type="checkbox" value="200">
+                <span class="custom-checkbox__checkmark"></span>
+            </label>
+        </div>
+    </div>
+</template>
+
+<script setup>
+import { useClothesStore } from '../../stores/clothes';
+
+const store = useClothesStore();
+</script>
+
+<style scoped>
+.filters__sidebar {
+    width: 200px;
+    float: left;
+    padding: 10px;
+}
+
+.filters__box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 0 15px;
+    border-top: 1px solid #ccc;
+}
+
+.filters__box p {
+    float: left;
+    font-weight: bold;
+    width: 100%;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.filters__options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.filters__options-list label {
+    float: left;
+}
+
+</style>
