@@ -1,12 +1,12 @@
 <template>
   <header>
     <TheLogo />
+    
     <nav>
+      <router-link to="/items">ПРОДУКТИ</router-link>
       <router-link to="/items/men">МЪЖЕ</router-link>
       <router-link to="/items/women">ЖЕНИ</router-link>
       <router-link to="/items/kids">ДЕЦА</router-link>
-      <router-link to="/items/sports">СПОРТ</router-link>
-      <router-link to="/items/brands">МАРКИ</router-link>
     </nav>
 
     <div class="search-and-cart">

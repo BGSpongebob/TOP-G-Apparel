@@ -1,5 +1,7 @@
 <template>
-    <img src="/images/Logo Transparent.png" alt="">
+    <router-link to="/">
+        <img src="/images/Logo Transparent.png" alt="">
+    </router-link>
 </template>
 
 <style scoped>

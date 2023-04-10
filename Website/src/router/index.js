@@ -1,36 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue';
 import Items from '../components/Items.vue';
+import Item from '../components/Item.vue';
+import Cart from '../components/Cart.vue';
+import ThankYou from '../components/ThankYou.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
       component: HomeView
     },
     {
       path: '/items',
-      name: 'items',
       component: Items,
     },
-    /*{
-      path: '/items',
-      name: 'items',
-      component: Items,
-      children: [         
-        {
-          path: '/:category',
-          name: 'item',
-          component: ItemsCategory
-        },
-        {
-          path: '/:name/:id',
-          name: 'item',
-          component: Item
-        }
-      ]
+    {
+      path: '/items/:name/:id',
+      component: Item
+    },     
+    {
+      path: '/items/:category',
+      component: Item
     },
     {
       path: '/cart',
@@ -41,7 +33,7 @@ const router = createRouter({
       path: '/thank-you',
       name: 'thank-you',
       component: ThankYou
-    }*/
+    }
   ]
 })
 

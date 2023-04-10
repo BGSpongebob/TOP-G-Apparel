@@ -1,4 +1,15 @@
 <template>
+    <div class="filters__">
+        <div>
+            <select name="" id="">
+                <option value="price-asc">Цена (по възходящ ред)</option>
+                <option value="price-desc">Цена (по низходящ ред)</option>
+                <option value="new">Най-нови</option>
+                <option value="recommended">Препоръчваме ви</option>
+            </select>
+        </div>
+        <div>Филтри</div>
+    </div>
     <div class="filters__sidebar">
         <div class="filters__box">
             <p>Категории</p>
@@ -92,9 +103,15 @@ const store = useClothesStore();
 
 <style scoped>
 .filters__sidebar {
-    width: 200px;
+    /*display: none;*/
+    width: calc(100% - 20px);
+    margin: 10px;
     float: left;
     padding: 10px;
+
+    border: 1px solid #ccc;
+    max-height: 400px;
+    overflow: auto;
 }
 
 .filters__box {
@@ -122,6 +139,16 @@ const store = useClothesStore();
 
 .filters__options-list label {
     float: left;
+}
+
+@media screen and (min-width: 768px) {
+    .filters__sidebar {
+        display: block;
+        width: 200px;
+        margin: 0;
+        border: none;
+        max-height: none;
+    }
 }
 
 </style>

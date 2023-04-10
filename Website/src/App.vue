@@ -3,7 +3,7 @@
     <TheHeader />
     
     <main>
-        <RouterView />
+      <RouterView />
     </main>
 
     <TheFooter />
