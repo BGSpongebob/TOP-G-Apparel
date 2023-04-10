@@ -1,6 +1,6 @@
 <template>
     <router-link to="/">
-        <img src="" alt="">
+        <img src="/images/Logo Transparent.png" alt="">
     </router-link>
 </template>
 
