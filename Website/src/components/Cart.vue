@@ -2,13 +2,13 @@
     <div v-if="items.value.length !== 0" 
         class="cart-content">
         <div class="cart-content__main-row">
-            <div></div>
-            <div>Продукт</div>
-            <div>Размер</div>
-            <div>Цена</div>
-            <div>Количество</div>
-            <div>Тотал</div>
-            <div></div>
+            <div class="cart-content__row-image"></div>
+            <div class="cart-content__row-name">Продукт</div>
+            <div class="cart-content__row-size">Размер</div>
+            <div class="cart-content__row-price">Цена</div>
+            <div class="cart-content__row-quantity">Количество</div>
+            <div class="cart-content__row-total">Тотал</div>
+            <div class="cart-content__row-delete"></div>
         </div>
         <div
             class="cart-content__row"
@@ -17,11 +17,21 @@
             <div class="cart-content__row-image">
                 <img :src="item.image">
             </div>
-            <div>{{ item.name }}</div>
-            <div>{{ item.size }}</div>
-            <div>{{ item.price.toFixed(2) }} лв.</div>
-            <div>{{ item.quantity }}</div>
-            <div>{{ (item.price * item.quantity).toFixed(2) }} лв.</div>
+            <div class="cart-content__row-name">
+                {{ item.name }}
+            </div>
+            <div class="cart-content__row-size">
+                {{ item.size }}
+            </div>
+            <div class="cart-content__row-price">
+                {{ item.price.toFixed(2) }} лв.
+            </div>
+            <div class="cart-content__row-quantity">
+                {{ item.quantity }}
+            </div>
+            <div class="cart-content__row-total">
+                {{ (item.price * item.quantity).toFixed(2) }} лв.
+            </div>
             <div class="cart-content__row-delete">
                 <div @click="cartStore.removeItemFromCart(key)">
                     Изтрии
@@ -47,8 +57,8 @@
             <input type="text">
         </div>
         <div>
-            <p>ЕИК - това поне не е задължително</p>
-            <input type="text">
+            <p>ЕИК</p>
+            <input type="text" placeholder="това поне не е задължително">
         </div>
         <div>
             <p>Имейл</p>
@@ -147,26 +157,40 @@ watch(
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    text-align: center;
 }
 
 .cart-content {
     float: left;
-    width: 100%;
+    width: calc(100% - 20px);
+    margin: 0 10px;
     padding: 10px;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    overflow: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .cart-content__main-row {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
+    min-width: 820px;
+    padding: 10px 0;
 }
 
 .cart-content__row {
     display: flex;
     justify-content: space-between;
+    min-width: 820px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
 
+.cart-content__row:last-child {
+    border-bottom: none;
 }
 
 .cart-content__row-image {
@@ -177,8 +201,36 @@ watch(
     width: 100%;
 }
 
+.cart-content__row-name {
+    width: 150px;
+    text-align: left;
+}
+
+.cart-content__row-size {
+    width: 80px;
+}
+
+.cart-content__row-price {
+    width: 100px;
+}
+
+.cart-content__row-quantity {
+    width: 100px;
+}
+
+.cart-content__row-total {
+    width: 120px;
+}
+
+.cart-content__row-delete {
+    width: 100px;
+}
+
 .cart-content__row-delete div{
     cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
 
 .delivery-info {

@@ -1,11 +1,17 @@
 <template>
     <router-link to="/">
-        <img src="/images/Logo Transparent.png" alt="">
+        <img src="" alt="">
     </router-link>
 </template>
 
 <style scoped>
 img {
-    width: 90px;
+    width: 60px;
+}
+
+@media screen and (min-width: 768px) {
+    img {
+        width: 90px;
+    }
 }
 </style>

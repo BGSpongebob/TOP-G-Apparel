@@ -22,7 +22,7 @@ const router = createRouter({
     },     
     {
       path: '/items/:category',
-      component: Item
+      component: Items
     },
     {
       path: '/cart',
@@ -34,7 +34,14 @@ const router = createRouter({
       name: 'thank-you',
       component: ThankYou
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  },
 })
 
 export default router

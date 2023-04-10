@@ -6,6 +6,12 @@
 
 <style scoped>
 img {
-    width: 40px;
+    width: 36px;
+}
+
+@media screen and (min-width: 768px) {
+    img {
+        width: 40px;
+    }
 }
 </style>

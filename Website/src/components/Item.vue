@@ -12,7 +12,8 @@
             <div class="item-sizes-list">
                 <div 
                     v-for="size in item.value.sizes"
-                    @click="selectSize(size)">
+                    @click="selectSize(size)"
+                    :class="{'selected-size': selectedSize === size}">
                     {{ size }}
                 </div>
             </div>
@@ -29,6 +30,13 @@
         >
             <div>Добавете в количката</div>
         </div>
+
+        <div 
+            class="success-message"
+            v-if="showSuccessMessage"
+        >
+            Успешно добавяне на продукт в количката!
+        </div>
     </div>
 </template>
 
@@ -43,7 +51,8 @@ const store = useClothesStore();
 const cart = useCartStore();
 const item = ref(null);
 const selectedSize = ref(null);
-const quantity = ref(null);
+const quantity = ref(1);
+const showSuccessMessage = ref(false);
 
 onBeforeMount(() => {
     item.value = ref(store.getItemById(route.params.id));
@@ -64,6 +73,13 @@ function addToCart() {
     };
     
     cart.addItemToCart(newCartItem);
+    quantity.value = 1;
+    selectedSize.value = null;
+
+    showSuccessMessage.value = true;
+    setTimeout(() => {
+        showSuccessMessage.value = false;
+    }, 5000);
 }
 
 function selectSize(size) {
@@ -74,25 +90,24 @@ function selectSize(size) {
 <style scoped>
 .item-images {
     float: left;
-    width: 50%;
+    width: 100%;
+    height: 500px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    flex-wrap: wrap;
-}
-
-.item-images img:first-child {
-    width: 100%;
+    overflow: auto;
 }
 
 .item-images img {
-    width: 45%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .item-details {
     float: left;
-    width: 50%;
+    width: 100%;
     padding: 10px;
 }
 
@@ -176,5 +191,37 @@ function selectSize(size) {
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+div.selected-size {
+    border: 2px solid black;
+    font-weight: bold;
+}
+
+.success-message {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    float: left;
+    padding: 20px;
+    font-size: 18px;
+}
+
+@media screen and (min-width: 920px) {
+    .item-images {
+        float: left;
+        width: 50%;
+        height: auto;
+        flex-wrap: wrap;
+    }
+    .item-details {
+        width: 50%;
+    }
+    .item-images img:first-child {
+        width: 100%;
+    }
+    .item-images img {
+        width: 45%;
+    }
 }
 </style>
