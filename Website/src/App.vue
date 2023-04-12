@@ -3,7 +3,11 @@
     <TheHeader />
     
     <main>
-      <RouterView />
+      <router-view v-slot="{ Component }">
+        <Transition>
+            <component :is="Component" />
+        </Transition>
+      </router-view>
     </main>
 
     <TheFooter />
@@ -28,5 +32,15 @@ import TheFooter from './components/layout/TheFooter.vue'
 main {
   width: 100%;
   max-width: 1200px;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity .3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>

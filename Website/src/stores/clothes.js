@@ -48,6 +48,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/MT23222-MIB_w_800_800px.jpg"
       ],
       "price": 35.99,
+      "sale": 10,
       "quantity": 10
     },
     2: {
@@ -63,6 +64,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/UMA223M801-3C_w_800_800px.jpg"
       ],
       "price": 17.99,
+      "sale": false,
       "quantity": 10
     },
     3: {
@@ -78,6 +80,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/DM8557-252_w_800_800px.jpg"
       ],
       "price": 47.99,
+      "sale": false,
       "quantity": 10
     },
     4: {
@@ -94,6 +97,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/001-sinya-vtalena-riza-melanzh-44458-56779_1.jpg",
       ],
       "price": 62.99,
+      "sale": false,
       "quantity": 10
     },
     5: {
@@ -110,6 +114,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/002-silno-vtalena-strech-riza-bordo-44473-13214_1.jpg"
       ],
       "price": 69.99,
+      "sale": false,
       "quantity": 10
     },
     6: {
@@ -126,6 +131,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/KDG00675_1_1.jpg",
       ],
       "price": 129.99,
+      "sale": false,
       "quantity": 10
     },
     7: {
@@ -142,6 +148,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/KDG00022_1_1.jpg",
       ],
       "price": 149.99,
+      "sale": 20,
       "quantity": 10
     },
     8: {
@@ -158,6 +165,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/13-76-a384cfb2120247_5.jpg"
       ],
       "price": 101.14,
+      "sale": false,
       "quantity": 10
     },
     9: {
@@ -174,6 +182,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/SSA231F801-60_1_w_800_800px.jpg"
       ],
       "price": 34.99,
+      "sale": false,
       "quantity": 10
     },
     10: {
@@ -190,6 +199,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/8bc0cb27e08d52e0fab12e219ef93118.png"
       ],
       "price": 34.99,
+      "sale": false,
       "quantity": 10
     },
     11: {
@@ -206,6 +216,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/10cc614c7501ac01447b2f7f5ea97a07.png"
       ],
       "price": 194.99,
+      "sale": 10,
       "quantity": 10
     },
     12: {
@@ -223,6 +234,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/ee6e03ca5366e9bb6033d1b98ee2c5f4.png"
       ],
       "price": 194.99,
+      "sale": false,
       "quantity": 10
     },
     13: {
@@ -240,6 +252,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/f72e34e49c1eb7183c836c8f28051c72.png"
       ],
       "price": 139.90,
+      "sale": false,
       "quantity": 10
     },
     14: {
@@ -257,6 +270,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/155ec167a3b1026876bcc8f948f95aa1.png"
       ],
       "price": 58.90,
+      "sale": 35,
       "quantity": 10
     },
     15: {
@@ -274,6 +288,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/717294324754c7439b16f7fd19cb5c39.png"
       ],
       "price": 70.49,
+      "sale": false,
       "quantity": 10
     },
     16: {
@@ -291,6 +306,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/f270f52deb8c3a241c773c47a77397e4.png"
       ],
       "price": 314.90,
+      "sale": false,
       "quantity": 10
     },
     17: {
@@ -307,6 +323,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/be4238f1a59f211392eba11e5c810f19.png",
       ],
       "price": 38.90,
+      "sale": false,
       "quantity": 10
     },
     18: {
@@ -323,6 +340,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/f93149f00e606fec162f89d76b8232d8.png",
       ],
       "price": 37.90,
+      "sale": false,
       "quantity": 10
     },
     19: {
@@ -339,6 +357,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/9525e268650f08ab1f9fd5e27ab5c482.png",
       ],
       "price": 69.90,
+      "sale": 25,
       "quantity": 10
     },
     20: {
@@ -355,6 +374,7 @@ export const useClothesStore = defineStore('clothes', () => {
         "/images/clothes/d53d7db902c7ba994588778ecc60d199.png",
       ],
       "price": 56.90,
+      "sale": false,
       "quantity": 10
     }
   }

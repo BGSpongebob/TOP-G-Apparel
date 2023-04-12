@@ -1,42 +1,51 @@
 <template>
-    <div class="item-images">
-        <img v-for="image in item.value.images" :src="image">
-    </div>
-    <div class="item-details">
-        <p class="item-name">{{ item.value.name }}</p>
-        <p class="item-brand">{{ item.value.brand }}</p>
-        <p class="item-price">{{ item.value.price.toFixed(2) }} лв.</p>
+    <div>
+        <div class="item-images">
+            <img v-for="image in item.value.images" :src="image">
+        </div>
+        <div class="item-details">
+            <p class="item-name">{{ item.value.name }}</p>
+            <p class="item-brand">{{ item.value.brand }}</p>
+            <div 
+                v-if="item.value.sale"
+                class="item-price"
+            >
+                {{ (item.value.price * ((100 - item.value.sale) / 100)).toFixed(2) }}  лв.
+                <span>{{ item.value.price }} лв.</span>
+            </div>
+            <p v-else class="item-price">{{ item.value.price.toFixed(2) }} лв.</p>
 
-        <div class="items-sizes">
-            <p>Изберете размер:</p>
-            <div class="item-sizes-list">
-                <div 
-                    v-for="size in item.value.sizes"
-                    @click="selectSize(size)"
-                    :class="{'selected-size': selectedSize === size}">
-                    {{ size }}
+            <div class="items-sizes">
+                <p>Изберете размер:</p>
+                <div class="item-sizes-list">
+                    <div 
+                        v-for="size in item.value.sizes"
+                        @click="selectedSize = size"
+                        :class="{'selected-size': selectedSize === size}">
+                        {{ size }}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="items-quantity">
-            <p>Изберете количество:</p>
-            <input type="number" v-model="quantity">
-        </div>
+            <div class="items-quantity">
+                <p>Изберете количество:</p>
+                <input type="number" v-model="quantity">
+            </div>
 
-        <div 
-            class="add-to-cart" 
-            @click="addToCart()"
-        >
-            <div>Добавете в количката</div>
-        </div>
+            <div 
+                class="add-to-cart" 
+                @click="addToCart()"
+            >
+                <div>Добавете в количката</div>
+            </div>
 
-        <div 
-            class="success-message"
-            v-if="showSuccessMessage"
-        >
-            Успешно добавяне на продукт в количката!
-        </div>
+            <div 
+                class="success-message"
+                v-if="showSuccessMessage"
+            >
+                Успешно добавяне на продукт в количката!
+            </div>
+        </div>       
     </div>
 </template>
 
@@ -66,9 +75,10 @@ function addToCart() {
         "age": this.item.value.age,
         "category": this.item.value.category,
         "brand": this.item.value.brand,
-        "size": selectedSize,
+        "size": selectedSize.value,
         "image": this.item.value.images[0],
         "price": this.item.value.price,
+        "sale": this.item.value.sale,
         "quantity": quantity.value
     };
     
@@ -80,10 +90,6 @@ function addToCart() {
     setTimeout(() => {
         showSuccessMessage.value = false;
     }, 5000);
-}
-
-function selectSize(size) {
-    selectedSize.value = size;
 }
 </script>
 
@@ -121,6 +127,12 @@ function selectSize(size) {
 
 .item-price{
     font-size: 26px;
+}
+
+.item-price span {
+    color: gray;
+    font-size: 20px;
+    text-decoration: line-through;
 }
 
 .item-brand {
