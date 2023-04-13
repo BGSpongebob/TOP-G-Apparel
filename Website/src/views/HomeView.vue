@@ -4,11 +4,17 @@
         <h1>TOP G APPAREL</h1>
         <p>За млади и смели ценители на модата, които искат да покоряват света всеки ден!</p>
         <router-link to="/items">
-            Вход
+            Напред
         </router-link>
     </div>
 </div>
+
+<Sales />
 </template>
+
+<script setup>
+import Sales from '../components/Sales.vue'
+</script>
 
 <style scoped>
 .wrapper {

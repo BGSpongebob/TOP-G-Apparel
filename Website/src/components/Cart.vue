@@ -1,150 +1,151 @@
 <template>
-    <div v-if="items.value.length !== 0" 
-        class="cart-content">
-        <div class="cart-content__main-row">
-            <div class="cart-content__row-image"></div>
-            <div class="cart-content__row-name">Продукт</div>
-            <div class="cart-content__row-size">Размер</div>
-            <div class="cart-content__row-price">Цена</div>
-            <div class="cart-content__row-quantity">Количество</div>
-            <div class="cart-content__row-total">Тотал</div>
-            <div class="cart-content__row-delete"></div>
-        </div>
-        <div
-            class="cart-content__row"
-            v-for="(item, key) in items.value"
-        >
-            <div class="cart-content__row-image">
-                <img :src="item.image">
+    <div>
+        <div v-if="items.length !== 0" 
+            class="cart-content">
+            <div class="cart-content__main-row">
+                <div class="cart-content__row-image"></div>
+                <div class="cart-content__row-name">Продукт</div>
+                <div class="cart-content__row-size">Размер</div>
+                <div class="cart-content__row-price">Цена</div>
+                <div class="cart-content__row-quantity">Количество</div>
+                <div class="cart-content__row-total">Тотал</div>
+                <div class="cart-content__row-delete"></div>
             </div>
-            <div class="cart-content__row-name">
-                {{ item.name }}
-            </div>
-            <div class="cart-content__row-size">
-                {{ item.size }}
-            </div>
-            <div class="cart-content__row-price">
-                {{ item.price.toFixed(2) }} лв.
-            </div>
-            <div class="cart-content__row-quantity">
-                {{ item.quantity }}
-            </div>
-            <div class="cart-content__row-total">
-                {{ (item.price * item.quantity).toFixed(2) }} лв.
-            </div>
-            <div class="cart-content__row-delete">
-                <div @click="cartStore.removeItemFromCart(key)">
-                    Изтрии
+            <div
+                class="cart-content__row"
+                v-for="(item, key) in items"
+            >
+                <div class="cart-content__row-image">
+                    <img :src="item.image">
+                </div>
+                <div class="cart-content__row-name">
+                    {{ item.name }}
+                </div>
+                <div class="cart-content__row-size">
+                    {{ item.size }}
+                </div>
+                <div class="cart-content__row-price">
+                    <span v-if="item.sale">
+                        {{ (item.price * ((100 - item.sale) / 100)).toFixed(2) }} лв.
+                    </span>
+                    <span v-else>
+                        {{ item.price.toFixed(2) }} лв.
+                    </span>
+                </div>
+                <div class="cart-content__row-quantity">
+                    {{ item.quantity }}
+                </div>
+                <div class="cart-content__row-total">
+                    <span v-if="item.sale">
+                        {{ ((item.price * ((100 - item.sale) / 100)) * item.quantity).toFixed(2) }} лв.
+                    </span>
+                    <span v-else>
+                        {{ (item.price * item.quantity).toFixed(2) }} лв.
+                    </span>
+                </div>
+                <div class="cart-content__row-delete">
+                    <div @click="cartStore.removeItemFromCart(key)">
+                        Изтрии
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div 
-        v-else
-        class="cart-empty"
-    >
-        Твоята количка е празна!
-    </div>
+        <div 
+            v-else
+            class="cart-empty"
+        >
+            Твоята количка е празна!
+        </div>
 
-    <div class="delivery-info">
-        <p class="delivery-info__title">ВАШАТА ИНФОРМАЦИЯ</p>
-        <div>
-            <p>Име</p>
-            <input type="text">
+        <div class="delivery-info">
+            <p class="delivery-info__title">ВАШАТА ИНФОРМАЦИЯ</p>
+            <div>
+                <p>Име</p>
+                <input type="text">
+            </div>
+            <div>
+                <p>Фамилиа</p>
+                <input type="text">
+            </div>
+            <div>
+                <p>ЕИК</p>
+                <input type="text" placeholder="това поне не е задължително">
+            </div>
+            <div>
+                <p>Имейл</p>
+                <input type="text">
+            </div>
+            <div>
+                <p>Телефон</p>
+                <input type="text">
+            </div>
+            <div>
+                <p>Град</p>
+                <input type="text">
+            </div>
+            <div>
+                <p>Пощенски код</p>
+                <input type="text">
+            </div>
+            <div>
+                <p>Адрес</p>
+                <input type="text">
+            </div>
         </div>
-        <div>
-            <p>Фамилиа</p>
-            <input type="text">
-        </div>
-        <div>
-            <p>ЕИК</p>
-            <input type="text" placeholder="това поне не е задължително">
-        </div>
-        <div>
-            <p>Имейл</p>
-            <input type="text">
-        </div>
-        <div>
-            <p>Телефон</p>
-            <input type="text">
-        </div>
-        <div>
-            <p>Град</p>
-            <input type="text">
-        </div>
-        <div>
-            <p>Пощенски код</p>
-            <input type="text">
-        </div>
-        <div>
-            <p>Адрес</p>
-            <input type="text">
-        </div>
-    </div>
 
-    <div class="payment-method">
-        <label class="custom-radio__container">
-            Наложен платеж
-            <input type="radio" name="payment_method" checked>
-            <span class="custom-radio__checkmark"></span>
-        </label>
-        <p>Платете на куриера по време на доставката. Моля, подгответе точната сума, ако можете.</p>
+        <div class="payment-method">
+            <label class="custom-radio__container">
+                Наложен платеж
+                <input type="radio" name="payment_method" checked>
+                <span class="custom-radio__checkmark"></span>
+            </label>
+            <p>Платете на куриера по време на доставката. Моля, подгответе точната сума, ако можете.</p>
 
-        <label class="custom-radio__container">
-            Плащане с Кредитна/Дебитна карта онлайн
-            <input type="radio" name="payment_method">
-            <span class="custom-radio__checkmark"></span>
-        </label>
-
-        <p>Всички плащания се извършват в българския лева (BGN). Ако сте платили с платежна карта издадена от банка в чужбина, сумата на транзакцията ще бъде превалутирана в български лева по обменния курс на Българска Народна Банка</p>
-
-        <p>Когато изтегляме сумата по поръчката ви от кредитната или дебитната ви карта, конвертираната сума ще бъде пресмятана спрямо вашата наьионална валута и всички такси които следват ще бъдат начилсени от операторите, които са издали вашата карта. Посочените цени в сайта са с информативна цел.</p>
-    </div>
-
-    <div 
-        class="total"
-        v-if="cartStore.getTotal() != 0"    
-    >
-        <div><b>Тотал:</b> {{ cartStore.getTotal() }} лв.</div>
-    </div>
-
-    <div class="confirm-order-wrapper">
-        <div class="confirm-order">
-            <label class="custom-checkbox__container">
-                Кликайки върху бутона, се съгласявате с <u>условията за ползване</u>
-                <input type="checkbox">
-                <span class="custom-checkbox__checkmark"></span>
+            <label class="custom-radio__container">
+                Плащане с Кредитна/Дебитна карта онлайн
+                <input type="radio" name="payment_method">
+                <span class="custom-radio__checkmark"></span>
             </label>
 
-            <p>Всички продукти, визуализирани в сайта, са част от нашите предложения, но това не означава, че те са постоянно достъпни.</p>
+            <p>Всички плащания се извършват в българския лева (BGN). Ако сте платили с платежна карта издадена от банка в чужбина, сумата на транзакцията ще бъде превалутирана в български лева по обменния курс на Българска Народна Банка</p>
 
-            <div
-                class="confirm-button" 
-                @click="confirmOrder()"
-            >
-                ПОТВЪРЖДАВАМ
+            <p>Когато изтегляме сумата по поръчката ви от кредитната или дебитната ви карта, конвертираната сума ще бъде пресмятана спрямо вашата наьионална валута и всички такси които следват ще бъдат начилсени от операторите, които са издали вашата карта. Посочените цени в сайта са с информативна цел.</p>
+        </div>
+
+        <div 
+            class="total"
+            v-if="cartStore.getTotal() != 0"    
+        >
+            <div><b>Тотал:</b> {{ cartStore.getTotal() }} лв.</div>
+        </div>
+
+        <div class="confirm-order-wrapper">
+            <div class="confirm-order">
+                <label class="custom-checkbox__container">
+                    Кликайки върху бутона, се съгласявате с <u>условията за ползване</u>
+                    <input type="checkbox">
+                    <span class="custom-checkbox__checkmark"></span>
+                </label>
+
+                <p>Всички продукти, визуализирани в сайта, са част от нашите предложения, но това не означава, че те са постоянно достъпни.</p>
+
+                <div
+                    class="confirm-button" 
+                    @click="confirmOrder()"
+                >
+                    ПОТВЪРЖДАВАМ
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref, onBeforeMount, watch } from 'vue';
+import { storeToRefs } from 'pinia'
 import { useCartStore } from '../stores/cart';
 
 const cartStore = useCartStore();
-const items = ref(null);
-
-onBeforeMount(() => {
-    items.value = ref(cartStore.items);
-});
-
-watch(
-    () => cartStore.items,
-    () => {
-        items.value = ref(cartStore.items);
-    }    
-);
+const { items } = storeToRefs(cartStore);
 </script>
 
 <style scoped>

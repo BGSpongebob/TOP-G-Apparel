@@ -7,6 +7,7 @@
       <router-link to="/items/men">МЪЖЕ</router-link>
       <router-link to="/items/women">ЖЕНИ</router-link>
       <router-link to="/items/kids">ДЕЦА</router-link>
+      <router-link to="/items/sales">ПРОМОЦИИ</router-link>
     </nav>
 
     <div class="search-and-cart">
@@ -39,6 +40,7 @@ function closeMenu() {
 </script>
 
 <style scoped>
+
 header {
   display: flex;
   justify-content: space-between;
@@ -46,18 +48,23 @@ header {
   padding: 10px;
   gap: 10px;
   max-width: 1200px;
-  width: 100%;
+  width: calc(100% - 20px);
+  font-size: 19px;
+  border-bottom: 1px solid #ccc;
+  margin: 0 10px 20px;
 }
 
 nav {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
 }
 
 .nav-mobile {
-  display: flex;
   position: absolute;
   top: 84px;
   left: 0;
@@ -66,6 +73,10 @@ nav {
   border-bottom: 1px solid #ccc;
   padding: 10px;
   z-index: 999;
+  height: auto;
+  max-height: 100%;
+  opacity: 1;
+  transition: max-height .5s;
 }
 
 .search-and-cart {
@@ -79,6 +90,10 @@ nav {
   nav {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    flex-basis: 100%;
+    max-height: none;
+    opacity: 1;
   }
 }
 </style>
